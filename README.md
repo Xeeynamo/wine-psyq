@@ -28,7 +28,6 @@ The following versions of PSY-Q are supported:
 * PSY-Q 4.0
 * PSY-Q 4.1
 * PSY-Q 4.3
-* PSY-Q 4.4
 * PSY-Q 4.6
 
 While the following tools are included within the image:
