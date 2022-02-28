@@ -5,7 +5,9 @@ RUN apk add xvfb
 RUN apk add wine
 
 ENV DISPLAY=:0.0
+RUN wine winver
+
+ENV PSYQ_INI=Z:\\app\\psyq.ini
+ENV PSYQ_PATH=Z:\\app
 WORKDIR /app
 COPY . /app/
-
-RUN wine winver

@@ -6,7 +6,9 @@ RUN apt update
 RUN apt-get install -y wine32 xvfb
 
 ENV DISPLAY=:0.0
+RUN wine winver
+
+ENV PSYQ_INI=Z:\\app\\psyq.ini
+ENV PSYQ_PATH=Z:\\app
 WORKDIR /app
 COPY . /app/
-
-RUN wine winver
