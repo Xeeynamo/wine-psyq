@@ -21,6 +21,8 @@ CC      := $(PSYQ) /app/CC1PSX.EXE
     $(AS) $(AS_FLAGS) -o $@ $@.s
 ```
 
+Also mount `/app/lib` and `/app/include` to expose your custom PSY-Q libraries.
+
 ## Toolchain support
 
 The following versions of PSY-Q are supported:

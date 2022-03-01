@@ -8,7 +8,12 @@ RUN apt-get install -y wine32 xvfb
 ENV DISPLAY=:0.0
 RUN wine winver
 
-ENV PSYQ_INI=Z:\\app\\psyq.ini
 ENV PSYQ_PATH=Z:\\app
+ENV COMPILER_PATH=Z:\\app
+ENV ASSEMBLER_PATH=Z:\\app
+ENV LINKER_PATH=Z:\\app
+ENV LIBRARY_PATH=Z:\\app\\lib
+ENV C_INCLUDE_PATH=Z:\\app\\include
+ENV CPLUS_INCLUDE_PATH=Z:\\app\\include
 WORKDIR /app
 COPY . /app/
