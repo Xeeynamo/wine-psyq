@@ -12,7 +12,7 @@ You can also easily use it in a `Makefile` by doing the following:
 
 ```
 PSYQVER := 4.6
-PSYQ    := docker run --rm -w /work -v ${PWD}:/work xeeynamo/psyq:$(PSYQVER) wine 
+PSYQ    := docker run --rm -w /work -v ${PWD}:/work xeeynamo/psyq:$(PSYQVER) wineconsole 
 AS      := $(PSYQ) /app/ASPSX.EXE
 CC      := $(PSYQ) /app/CC1PSX.EXE
 
