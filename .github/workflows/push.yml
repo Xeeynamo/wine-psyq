@@ -48,3 +48,43 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Push image
         run: docker push xeeynamo/psyq:${{ matrix.version }}-alpine
+  push-ubuntu-msdos:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ["2.6", "3.0", "3.3", "3.5", "3.6"]
+    steps:
+      - name: Clone main repository
+        uses: actions/checkout@v2
+      - name: Build image
+        run: |
+          cd psyq${{ matrix.version }}
+          docker build -t xeeynamo/psyq:${{ matrix.version }} -f ../Dockerfile.ubuntu-msdos .
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Push image
+        run: docker push xeeynamo/psyq:${{ matrix.version }}
+  push-alpine:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ["4.0", "4.1", "4.3", "4.6"]
+    steps:
+      - name: Clone main repository
+        uses: actions/checkout@v2
+      - name: Build image
+        run: |
+          cd psyq${{ matrix.version }}
+          docker build -t xeeynamo/psyq:${{ matrix.version }}-alpine -f ../Dockerfile.alpine .
+      - name: Login to DockerHub
+        uses: docker/login-action@v1 
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Push image
+        run: docker push xeeynamo/psyq:${{ matrix.version }}-alpine

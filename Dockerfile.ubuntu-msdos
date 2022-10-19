@@ -1,0 +1,23 @@
+FROM ubuntu:latest
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository -y ppa:dosemu2/ppa
+RUN apt-get update
+RUN apt-get install -y dosemu2
+
+RUN useradd psyq
+RUN mkdir -p /home/psyq
+RUN chown psyq /home/psyq/
+RUN runuser -u psyq -- dosemu -K . -E "ECHO done"
+
+ENV PSYQ_PATH=Z:\\app
+ENV COMPILER_PATH=Z:\\app
+ENV ASSEMBLER_PATH=Z:\\app
+ENV LINKER_PATH=Z:\\app
+ENV LIBRARY_PATH=Z:\\app\\lib
+ENV C_INCLUDE_PATH=Z:\\app\\include
+ENV CPLUS_INCLUDE_PATH=Z:\\app\\include
+WORKDIR /app
+COPY . /app/

@@ -27,6 +27,11 @@ Also mount `/app/lib` and `/app/include` to expose your custom PSY-Q libraries.
 
 The following versions of PSY-Q are supported:
 
+* PSY-Q 2.6
+* PSY-Q 3.0
+* PSY-Q 3.3
+* PSY-Q 3.5
+* PSY-Q 3.6
 * PSY-Q 4.0
 * PSY-Q 4.1
 * PSY-Q 4.3
@@ -36,18 +41,20 @@ While the following tools are included within the image:
 
 * ASMPSX
 * ASPSX
-* CC1PLPSX
-* CC1PSX
+* CC1PLPSX (starting from 3.6)
+* CC1PSX (starting from 3.6)
 * CCPSX
-* CPLUSPSX
-* CPPPSX
+* CPLUSPSX (starting from 3.6)
+* CPPPSX (starting from 3.6)
 * PSYLIB
 * PSYLINK
 * PSYMAKE
 
+PSY-Q up to version 3.6 uses compilers built for MS-DOS. Therefore the toolchain behaviour will differenciate compared to PSY-Q 4.x.
+
 ## Why?
 
-PSY-Q 4.x is an ancient toolchain built around 1996 and it was created to run on the 32-bit versions of Windows (eg. Windows 95 and Windows NT 4.0).
+PSY-Q is an ancient toolchain built around 1996 and it was created to run on the 32-bit versions of Windows (eg. Windows 95 and Windows NT 4.0).
 As we are moving in a cross-platform world, me and other people needs a solution where the toolchain can run on Linux and GitHub Actions, without bothering to install Wine.
 By providing a Docker Image with the various versions of PSY-Q inside, it will be possible to run the toolchain within seconds and without any set-up involved. Including on the modern versions of Windows.
 
