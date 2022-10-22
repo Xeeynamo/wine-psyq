@@ -20,9 +20,15 @@ ENV LINKER_PATH=Z:\\app
 ENV LIBRARY_PATH=Z:\\app\\lib
 ENV C_INCLUDE_PATH=Z:\\app\\include
 ENV CPLUS_INCLUDE_PATH=Z:\\app\\include
-WORKDIR /app
-COPY . /app/
 
-RUN echo "runuser -u psyq -- dosemu -quiet -dumb -K . -E" >> /bin/DOSEMU
-RUN chmod +x /bin/DOSEMU
-RUN DOSEMU "echo done"
+# Does not set global visibility to PSY-Q tools
+#COPY . /home/psyq/.dosemu/drive_c/
+#RUN chown psyq /home/psyq/.dosemu
+#RUN chown psyq /home/psyq/.dosemu/drive_c
+
+# Hack to have PSY-Q tools under %PATH%
+COPY . /usr/share/dosemu2-extras/bat/
+
+RUN printf '#!/bin/sh\nrunuser -u psyq -- dosemu -quiet -dumb -K . -E \"$@\"' >> /usr/bin/DOSEMU
+RUN chmod +x /usr/bin/DOSEMU
+RUN DOSEMU echo done
